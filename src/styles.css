@@ -38,18 +38,25 @@ html {
 
 body {
     box-sizing: border-box;
-    --background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)), url("../assets/desktop/bg-image-daytime.jpg");
     margin: 0;
     font-family: Inter, sans-serif;
-    background-repeat: no-repeat;
-    background-image: var(--background);
-    background-size: 100%;
+
     height: 100svh;
     display: grid;
     grid-template-rows: 50svh 50svh;
     color: var(--white);
     position: relative;
     overflow: hidden;
+}
+
+.daytime {
+    background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)) ,url("../assets/desktop/bg-image-daytime.jpg") no-repeat;
+    background-size: 100%;
+}
+
+.nighttime {
+    background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)), url("../assets/desktop/bg-image-nighttime.jpg") no-repeat;
+    background-size: 100%;
 }
 
 h1, #time {
@@ -174,6 +181,10 @@ main {
 
 #newQuote {
     margin-top: 11px;
+}
+
+#greeting::after {
+    content: ", it's currently";
 }
 
 #abbreviation {

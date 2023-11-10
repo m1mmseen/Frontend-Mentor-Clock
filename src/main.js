@@ -3,12 +3,13 @@
 /*  GENERAL VARIABLES  */
 
 let clientIp = '';
+let greet = document.getElementById("greeting");
 
 
 /* WHEN SITE IS LOADED */
 getQuote();
 getCurrentTime();
-//getLocation();
+getLocation();
 
 
 
@@ -44,6 +45,7 @@ const dayOfTheYear = document.querySelector("#dayOfTheYear>h2");
 const dayOfTheWeek = document.querySelector("#dayOfTheWeek>h2");
 const weekNumber = document.querySelector("#weekNumber>h2");
 
+
 async function getCurrentTime() {
     await fetch("http://worldtimeapi.org/api/ip")
         .then(response => {
@@ -54,13 +56,16 @@ async function getCurrentTime() {
             }
         })
         .then(data => {
-            let currentTime = new Date(data.datetime);
-            time.innerHTML = currentTime.toTimeString().split(' ')[0].substring(0, 5);
+            let currentTime = new Date(data.datetime).toTimeString().split(' ')[0].substring(0, 5);
+            time.innerHTML = currentTime;
             abbreviation.innerHTML = data.abbreviation;
             timezone.innerText = data.timezone;
             dayOfTheYear.innerHTML = data.day_of_year;
             dayOfTheWeek.innerHTML = data.day_of_week;
             weekNumber.innerHTML = data.week_number;
+            const hour = parseInt(currentTime.split(":")[0]);
+            setBackground(hour);
+            greeting(hour);
 
             clientIp = data.client_ip;
 
@@ -115,16 +120,34 @@ function moreInfoToggle() {
 
         toggled = false;
     }
-
-
-
 }
 
 
 function changeButtonIcon() {
 
 }
-//
+/*    SET BACKGROUND BY TIME   */
+
+function setBackground(hour){
+    const body = document.body;
+    if (hour >= 5 || hour <= 18) {
+        body.classList.add("daytime");
+    } else {
+        body.classList.add("nighttime")
+    }
+}
+
+function greeting(hour) {
+
+    if (hour >= 5 && hour < 12){
+        greet.innerHTML = "Good morning"
+    } else if (hour >= 12 && hour < 18) {
+        greet.innerHTML = "Good afternoon";
+    } else {
+        greet.innerHTML = " Good evening";
+    }
+}
+
 
 
 //setProperty("--background", url("../assets/desktop/bg-image-nighttime.jpg"));
