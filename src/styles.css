@@ -1,0 +1,231 @@
+@Font-Face {
+    font-family: Inter;
+    src: url("../assets/fonts/Inter/static/Inter-Light.ttf");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@Font-Face {
+    font-family: Inter;
+    src: url("../assets/fonts/Inter/static/Inter-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@Font-Face {
+    font-family: Inter;
+    src: url("../assets/fonts/Inter/static/Inter-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@Font-Face {
+    font-family: Inter;
+    src: url("../assets/fonts/Inter/static/Inter-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --black: hsl(0, 0%, 0%);
+    --dark-grey: hsl(0, 0%, 19%);
+    --white: hsl(0, 0%, 96%);
+}
+html {
+    margin: 0;
+}
+
+
+body {
+    box-sizing: border-box;
+    --background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)), url("../assets/desktop/bg-image-daytime.jpg");
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background-repeat: no-repeat;
+    background-image: var(--background);
+    background-size: 100%;
+    height: 100svh;
+    display: grid;
+    grid-template-rows: 50svh 50svh;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+h1, #time {
+    font-size: 200px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+h2 {
+    color: #303030;
+    font-family: Inter;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 116.667%;
+    text-transform: uppercase;
+}
+
+h4 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+h6 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+    line-height: 186%;
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
+}
+
+button {
+    width: 146px;
+    height: 56px;
+    background-color: var(--white);
+    color: hsla(0, 100%, 0%, 50%);
+    border-radius: 50px;
+    margin-top: 56px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 175%;
+    letter-spacing: 5px;
+    font-family: Inter, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 21px;
+    border: none;
+}
+
+button:hover svg > circle {
+    fill: #999999;
+}
+
+
+main, header {
+    width: 1110px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-top: 56px;
+    transition: all 1s;
+}
+
+main {
+    margin-bottom: 98px;
+    justify-content: space-between;
+    transition: all 1s;
+    position: relative;
+    z-index: 2;
+}
+
+.quote {
+    width: 540px;
+    height: 125px;
+}
+
+
+#quote {
+    line-height: 155.556%;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+#quote::after, #quote::before {
+    content: '"';
+}
+
+#newQuote {
+    margin-top: 11px;
+}
+
+#abbreviation {
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 70%;
+    font-weight: 300;
+}
+
+.move-up {
+    transform: translateY(-100%);
+    transition: all 1s;
+}
+
+.main-move-up {
+    transform: translateY(-100%);
+    padding-bottom: 56px;
+    transition: all 1s;
+}
+
+section {
+    height: 50svh;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    transition: all 1s;
+
+}
+
+.details-container {
+    width: 884px;
+    height: 252px;
+    margin-left: 165px;
+    margin-top: 74px;
+    display: grid;
+    grid-template-columns: 570px 273px;
+}
+
+.details-container > div:first-of-type {
+    border-right: 1px solid #303030;
+}
+
+.details-container > div:last-of-type {
+    padding-left: 94px;
+}
+
+#left-details-block > div:first-of-type, #right-details-block > div:first-of-type {
+    padding-bottom: 42px;
+}
+
+.detail {
+    height: 105px;
+}
