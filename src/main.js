@@ -12,8 +12,6 @@ getCurrentTime();
 getLocation();
 
 
-
-
 /*  GET QUOTE FROM API   */
 
 const newQuote = document.getElementById("newQuote");
@@ -35,7 +33,6 @@ async function getQuote(){
             document.getElementById("author").innerHTML = data.author;
         })
 }
-
 /*    TIME    */
 
 const time = document.getElementById("time");
@@ -44,7 +41,6 @@ const timezone = document.querySelector("#timezone>h2");
 const dayOfTheYear = document.querySelector("#dayOfTheYear>h2");
 const dayOfTheWeek = document.querySelector("#dayOfTheWeek>h2");
 const weekNumber = document.querySelector("#weekNumber>h2");
-
 
 async function getCurrentTime() {
     await fetch("http://worldtimeapi.org/api/ip")
@@ -68,7 +64,6 @@ async function getCurrentTime() {
             greeting(hour);
 
             clientIp = data.client_ip;
-
         })
 }
 
@@ -100,40 +95,36 @@ moreLess.addEventListener("click", moreInfoToggle);
 function moreInfoToggle() {
     const path= document.querySelector("svg>path");
     const buttonText = document.querySelector("button>p");
-    const header = document.getElementById("quote-container");
-    const main = document.getElementById("main-container");
-    const details = document.getElementById("details");
+    const mainContainer = document.querySelector(".top-section");
+    const details = document.querySelector(".bottom-section");
     if (!toggled) {
         path.setAttribute("d", "M14 23L20 17L26 23");
         buttonText.innerHTML = "less";
-        header.classList.add("move-up");
-        main.classList.add("main-move-up");
-        details.classList.add("move-up");
+        mainContainer.classList.add("top-move-up");
+        details.classList.add("bottom-move-up");
 
         toggled = true;
     } else {
         path.setAttribute("d", "M14 17L20 23L26 17");
         buttonText.innerHTML = "more"
-        header.classList.remove("move-up");
-        main.classList.remove("main-move-up");
-        details.classList.remove("move-up");
+        mainContainer.classList.remove("top-move-up");
+        details.classList.remove("bottom-move-up");
 
         toggled = false;
     }
 }
 
-
-function changeButtonIcon() {
-
-}
 /*    SET BACKGROUND BY TIME   */
 
 function setBackground(hour){
     const body = document.body;
+    const bottomSection = document.querySelector(".bottom-section");
     if (hour >= 5 || hour <= 18) {
-        body.classList.add("daytime");
+        body.classList.add("daytime-picture");
+        bottomSection.style.background = "hsl(0, 0%, 96%)";
     } else {
-        body.classList.add("nighttime")
+        body.classList.add("nighttime-picture");
+        bottomSection.style.background = "hsl(0, 0%, 19%)";
     }
 }
 
@@ -147,7 +138,3 @@ function greeting(hour) {
         greet.innerHTML = " Good evening";
     }
 }
-
-
-
-//setProperty("--background", url("../assets/desktop/bg-image-nighttime.jpg"));

@@ -30,7 +30,13 @@
     --black: hsl(0, 0%, 0%);
     --dark-grey: hsl(0, 0%, 19%);
     --white: hsl(0, 0%, 96%);
+
+    --quote: clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+    --time: clamp(6.25rem, 4.0493rem + 9.3897vw, 12.5rem);
 }
+
+
+
 html {
     margin: 0;
 }
@@ -40,36 +46,36 @@ body {
     box-sizing: border-box;
     margin: 0;
     font-family: Inter, sans-serif;
-
     height: 100svh;
     display: grid;
-    grid-template-rows: 50svh 50svh;
     color: var(--white);
     position: relative;
     overflow: hidden;
 }
 
-.daytime {
+.daytime-picture {
     background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)) ,url("../assets/desktop/bg-image-daytime.jpg") no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 
-.nighttime {
+.nighttime-picture {
     background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)), url("../assets/desktop/bg-image-nighttime.jpg") no-repeat;
     background-size: 100%;
 }
 
+
+
 h1, #time {
-    font-size: 200px;
+    font-size: clamp(6.25rem, 4.0493rem + 9.3897vw, 12.5rem);
     font-weight: 700;
-    letter-spacing: 5px;
+    letter-spacing: -2px;
     margin: 0;
 }
 
 h2 {
     color: #303030;
     font-family: Inter;
-    font-size: 56px;
+    font-size: clamp(1.25rem, 0.4577rem + 3.3803vw, 3.5rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -87,7 +93,7 @@ h3 {
 
 h4 {
     margin: 0;
-    font-size: 20px;
+    font-size: clamp(0.9375rem, 0.8275rem + 0.4695vw, 1.25rem);
     font-weight: 400;
     line-height: 140%;
     letter-spacing: 4px;
@@ -95,12 +101,12 @@ h4 {
 }
 
 h5 {
-    font-size: 18px;
+    font-size: var(--quote);
     font-weight: 700;
 }
 
 h6 {
-    font-size: 15px;
+    font-size: clamp(0.625rem, 0.515rem + 0.4695vw, 0.9375rem);
     letter-spacing: 3px;
     font-weight: 400;
     text-transform: uppercase;
@@ -110,11 +116,11 @@ h6 {
 }
 
 p {
-    font-size: 18px;
+    font-size: var(--quote);
 }
 
 button {
-    width: 146px;
+/*    width: 146px;*/
     height: 56px;
     background-color: var(--white);
     color: hsla(0, 100%, 0%, 50%);
@@ -129,114 +135,143 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 21px;
+    padding-left: 25px;
     border: none;
+}
+
+button > p {
+    padding-inline: 1rem;
 }
 
 button:hover svg > circle {
     fill: #999999;
 }
 
+.top-section {
+    display: grid;
+    grid-template-rows: 40% 60%;
+    height: 100%;
+    transition: all 1s ease-in-out;
+}
 
-main, header {
-    width: 1110px;
-    margin-left: auto;
-    margin-right: auto;
+.bottom-section {
+    position: absolute;
+    top: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    height: 40%;
+    transition: all 1s ease-in-out;
+}
+
+.top-move-up {
+    transform: translateY(-40%);
+}
+
+.bottom-move-up {
+    transform: translateY(-100%);
+
+}
+
+#quote-container, #time-container, #details-container {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    column-gap: 2em;
+    padding: 7% clamp(1.625rem, -1.434rem + 13.0516vw, 10.3125rem);
 }
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding-top: 56px;
-    transition: all 1s;
+.quote-content, .time-content {
+    min-width: 40%;
 }
 
-main {
-    margin-bottom: 98px;
-    justify-content: space-between;
-    transition: all 1s;
-    position: relative;
-    z-index: 2;
+#quote-container > img {
+    width: 17px;
+    height: 17px;
 }
-
-.quote {
-    width: 540px;
-    height: 125px;
-}
-
 
 #quote {
-    line-height: 155.556%;
-    font-weight: 400;
-    font-size: 18px;
+    font-size: clamp(.1rem, .9rem, 18px);
     margin-top: 0;
+    line-height: 183%;
+}
+
+#author {
+    font-size: clamp(.1rem, 1rem, 18px);
+}
+
+#time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+#abbreviation {
+    font-size: clamp(2rem, 1.8239rem + 0.7512vw, 2.5rem);
+    text-transform: uppercase;
+    line-height: 70%;
+    font-weight: 300;
 }
 
 #quote::after, #quote::before {
     content: '"';
 }
 
-#newQuote {
-    margin-top: 11px;
-}
 
 #greeting::after {
     content: ", it's currently";
 }
 
-#abbreviation {
-    font-size: 40px;
-    text-transform: uppercase;
-    line-height: 70%;
-    font-weight: 300;
-}
-
-.move-up {
-    transform: translateY(-100%);
-    transition: all 1s;
-}
-
-.main-move-up {
-    transform: translateY(-100%);
-    padding-bottom: 56px;
-    transition: all 1s;
-}
-
-section {
-    height: 50svh;
+#details {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
     width: 100%;
-    position: relative;
-    z-index: 1;
     transition: all 1s;
-
 }
 
-.details-container {
-    width: 884px;
-    height: 252px;
-    margin-left: 165px;
-    margin-top: 74px;
+#details-container {
     display: grid;
-    grid-template-columns: 570px 273px;
+    grid-template-columns: min(50%, 570px) min(30%, 273px);
+}
+#left-details-block {
+    border-right: 1px solid hsla(0, 100%, 0%, 50%);
 }
 
-.details-container > div:first-of-type {
-    border-right: 1px solid #303030;
+#right-details-block {
+    padding-left: 3rem;
 }
 
-.details-container > div:last-of-type {
-    padding-left: 94px;
+
+@media (max-width: 768px) {
+    #time-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    #details-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #left-details-block, #right-details-block {
+        width: 100%;
+        border: none;
+    }
+    .detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 5%;
+        max-width: 95%;
+    }
+    #right-details-block {
+        padding-left: 0;
+    }
+
+}
+@media (max-width: 375px) {
+
+    .detail {
+        margin-bottom: 18%;
+    }
 }
 
-#left-details-block > div:first-of-type, #right-details-block > div:first-of-type {
-    padding-bottom: 42px;
-}
-
-.detail {
-    height: 105px;
-}
