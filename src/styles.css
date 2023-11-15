@@ -36,17 +36,15 @@
 }
 
 
-
 html {
     margin: 0;
 }
-
 
 body {
     box-sizing: border-box;
     margin: 0;
     font-family: Inter, sans-serif;
-    height: 100svh;
+    height: 100dvh;
     display: grid;
     color: var(--white);
     position: relative;
@@ -62,8 +60,6 @@ body {
     background: linear-gradient(hsla(0, 0%, 30%, 50%), hsla(0, 0%, 0%, 50%)), url("../assets/desktop/bg-image-nighttime.jpg") no-repeat;
     background-size: 100%;
 }
-
-
 
 h1, #time {
     font-size: clamp(6.25rem, 4.0493rem + 9.3897vw, 12.5rem);
@@ -176,8 +172,13 @@ button:hover svg > circle {
 #quote-container, #time-container, #details-container {
     display: flex;
     column-gap: 2em;
-    padding: 7% clamp(1.625rem, -1.434rem + 13.0516vw, 10.3125rem);
+    padding: 2% clamp(1.625rem, -1.434rem + 13.0516vw, 10.3125rem);
 }
+
+.quote-content {
+    max-width: 50%;
+}
+
 .quote-content, .time-content {
     min-width: 40%;
 }
