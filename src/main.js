@@ -43,7 +43,7 @@ const dayOfTheWeek = document.querySelector("#dayOfTheWeek>h2");
 const weekNumber = document.querySelector("#weekNumber>h2");
 
 async function getCurrentTime() {
-    await fetch("http://worldtimeapi.org/api/ip")
+    await fetch("https://worldtimeapi.org/api/ip")
         .then(response => {
             if (response.ok) {
                 return response.json();
